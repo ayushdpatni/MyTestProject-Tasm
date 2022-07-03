@@ -1,0 +1,781 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+MyTestProjectInTasm.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 03-07-2022  --  15:08:05 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .MODEL SMALL
+[   2]        :                                       .STACK 100H
+[   3]        :                                       
+[   4]        :                                       
+[   5]        :                                       .DATA
+[   6]        :                                       
+[   7]        :                                       
+[   8]    0100: 20 20 20 20 20 20 20 20 20 20 20 20   MSG1 DB '                .....WELCOME TO QUIZ BY AYUSH PATNI.....$'
+                20 20 20 20 2E 2E 2E 2E 2E 57 45 4C 
+                43 4F 4D 45 20 54 4F 20 51 55 49 5A 
+                20 42 59 20 41 59 55 53 48 20 50 41 
+                54 4E 49 2E 2E 2E 2E 2E 24          
+[   9]    0139: 52 75 6C 65 73 3A 20 24               MSG2 DB 'Rules : $'
+[  10]    0141: 2A 2E 20 46 6F 72 20 45 76 65 72 79   MSG3 DB '*. For Every Correct Answer you will get 1 Mark.$'
+                20 43 6F 72 72 65 63 74 20 41 6E 73 
+                77 65 72 20 79 6F 75 20 77 69 6C 6C 
+                20 67 65 74 20 31 20 4D 61 72 6B 2E 
+                24                                  
+[  11]    0172: 2A 2E 20 46 6F 72 20 45 76 65 72 79   MSG4 DB '*. For Every Wrong Answer 1 Mark will cut from your Total Marks.$'
+                20 57 72 6F 6E 67 20 41 6E 73 77 65 
+                72 20 31 20 4D 61 72 6B 20 77 69 6C 
+                6C 20 63 75 74 20 66 72 6F 6D 20 79 
+                6F 75 72 20 54 6F 74 61 6C 20 4D 61 
+                72 6B 73 2E 24                      
+[  12]    01B3: 50 72 65 73 73 20 45 6E 74 65 72 20   MSG5 DB 'Press Enter to start the Quiz : $'
+                74 6F 20 73 74 61 72 74 20 74 68 65 
+                20 51 75 69 7A 3A 20 24             
+[  13]        :                                       
+[  14]        :                                       
+[  15]    01D3: 43 6F 72 72 65 63 74 20 41 6E 73 77   MSG6 DB 'Correct Answer$'
+                65 72 24                            
+[  16]    01E2: 49 6E 63 6F 72 72 65 63 74 20 41 6E   MSG7 DB 'Incorrect Answer$'
+                73 77 65 72 24                      
+[  17]        :                                       
+[  18]        :                                       
+[  19]    01F3: 59 6F 75 20 68 61 76 65 20 73 75 63   MSG8 DB 'You have successfully completed your quiz.$'
+                63 65 73 73 66 75 6C 6C 79 20 63 6F 
+                6D 70 6C 65 74 65 64 20 79 6F 75 72 
+                20 71 75 69 7A 2E 24                
+[  20]    021E: 59 6F 75 72 20 54 6F 74 61 6C 20 4D   MSG9 DB 'Your Total Marks are : $'
+                61 72 6B 73 20 61 72 65 3A 20 24    
+[  21]        :                                       
+[  22]        :                                       
+[  23]    0235: 50 72 65 73 73 20 31 20 74 6F 20 52   MSG10 DB 'Press 1 to Re-attempt quiz or 0 to Exit.$'
+                65 2D 61 74 74 65 6D 70 74 20 71 75 
+                69 7A 20 6F 72 20 30 20 74 6F 20 45 
+                78 69 74 2E 24                      
+[  24]    025E: 20 20 20 20 20 20 20 20 20 20 20 20   MSG11 DB '                    ***Thank you.! ***$'
+                20 20 20 20 20 20 20 20 2A 2A 2A 54 
+                68 61 6E 6B 20 79 6F 75 2E 21 20 2A 
+                2A 2A 24                            
+[  25]        :                                       
+[  26]        :                                       
+[  27]    0285: 31 2E 20 57 68 61 74 20 69 73 20 74   Q1 DB '1. What is three fifth of 100?$'
+                68 72 65 65 20 66 69 66 74 68 20 6F 
+                66 20 31 30 30 3F 24                
+[  28]    02A4: 20 20 20 61 29 20 36 30 20 20 20 20   QA1 DB '   a) 60    b) 16    c) 72$'
+                62 29 20 31 36 20 20 20 20 63 29 20 
+                37 32 24                            
+[  29]    02BF: 32 2E 20 57 68 61 74 20 69 73 20 74   Q2 DB '2. What is the remainder of 21 divided by 7$'
+                68 65 20 72 65 6D 61 69 6E 64 65 72 
+                20 6F 66 20 32 31 20 64 69 76 69 64 
+                65 64 20 62 79 20 37 24             
+[  30]    02EB: 20 20 20 61 29 20 33 20 20 20 20 62   QA2 DB '   a) 3    b) 0    c) 1$'
+                29 20 30 20 20 20 20 63 29 20 31 24 
+                                                    
+[  31]    0303: 33 2E 20 57 68 61 74 20 69 73 20 37   Q3 DB '3. What is 7% equal to?$'
+                25 20 65 71 75 61 6C 20 74 6F 3F 24 
+                                                    
+[  32]    031B: 20 20 20 61 29 20 30 2E 37 20 20 20   QA3 DB '   a) 0.7    b) 0.007    c) 0.07$'
+                20 62 29 20 30 2E 30 30 37 20 20 20 
+                20 63 29 20 30 2E 30 37 24          
+[  33]    033C: 34 2E 20 57 68 61 74 20 69 73 20 74   Q4 DB '4. What is the square of 15?$'
+                68 65 20 73 71 75 61 72 65 20 6F 66 
+                20 31 35 3F 24                      
+[  34]    0359: 20 20 20 61 29 20 31 30 35 20 20 20   QA4 DB '   a) 105    b) 225    c) 250$'
+                20 62 29 20 32 32 35 20 20 20 20 63 
+                29 20 32 35 30 24                   
+[  35]    0377: 35 2E 20 57 68 61 74 20 69 73 20 74   Q5 DB '5. What is the reciprocal of 17/15?$'
+                68 65 20 72 65 63 69 70 72 6F 63 61 
+                6C 20 6F 66 20 31 37 2F 31 35 3F 24 
+                                                    
+[  36]    039B: 20 20 20 61 29 20 31 35 2F 31 37 20   QA5 DB '   a) 15/17    b) 17/15    c) 30/34$'
+                20 20 20 62 29 20 31 37 2F 31 35 20 
+                20 20 20 63 29 20 33 30 2F 33 34 24 
+                                                    
+[  37]    03BF: 36 2E 20 57 68 61 74 20 69 73 20 74   Q6 DB '6. What is the quotient when 13/12?$'
+                68 65 20 71 75 6F 74 69 65 6E 74 20 
+                77 68 65 6E 20 31 33 2F 31 32 3F 24 
+                                                    
+[  38]    03E3: 20 20 20 61 29 20 33 20 20 20 20 62   QA6 DB '   a) 3    b) 2    c) 1$'
+                29 20 32 20 20 20 20 63 29 20 31 24 
+                                                    
+[  39]    03FB: 37 2E 20 31 32 33 2B 34 2D 35 2B 36   Q7 DB '7. 123+4-5+67-89 = ?$'
+                37 2D 38 39 20 3D 20 3F 24          
+[  40]    0410: 20 20 20 61 29 20 31 30 31 20 20 20   QA7 DB '   a) 101    b) 100    c) 103$'
+                20 62 29 20 31 30 30 20 20 20 20 63 
+                29 20 31 30 33 24                   
+[  41]    042E: 38 2E 20 57 68 61 74 20 64 6F 65 73   Q8 DB '8. What does 6 raise to the power of 0 equal?$'
+                20 36 20 72 61 69 73 65 20 74 6F 20 
+                74 68 65 20 70 6F 77 65 72 20 6F 66 
+                20 30 20 65 71 75 61 6C 3F 24       
+[  42]    045C: 20 20 20 61 29 20 30 20 20 20 20 62   QA8 DB '   a) 0    b) 2    c) 1$'
+                29 20 32 20 20 20 20 63 29 20 31 24 
+                                                    
+[  43]    0474: 39 2E 20 57 68 61 74 20 69 73 20 74   Q9 DB '9. What is the name of a triangle that has two sides of the same length?$'
+                68 65 20 6E 61 6D 65 20 6F 66 20 61 
+                20 74 72 69 61 6E 67 6C 65 20 74 68 
+                61 74 20 68 61 73 20 74 77 6F 20 73 
+                69 64 65 73 20 6F 66 20 74 68 65 20 
+                73 61 6D 65 20 6C 65 6E 67 74 68 3F 
+                24                                  
+[  44]    04BD: 20 20 20 61 29 20 49 73 6F 73 63 65   QA9 DB '   a) Isosceles    b) Equilateral    c) None$'
+                6C 65 73 20 20 20 20 62 29 20 45 71 
+                75 69 6C 61 74 65 72 61 6C 20 20 20 
+                20 63 29 20 4E 6F 6E 65 24          
+[  45]    04EA: 31 30 2E 20 53 6F 6C 76 65 20 74 68   Q10 DB '10. Solve the following equation: -15 + (-5x)=0$'
+                65 20 66 6F 6C 6C 6F 77 69 6E 67 20 
+                65 71 75 61 74 69 6F 6E 3A 20 2D 31 
+                35 20 2B 20 28 2D 35 78 29 3D 30 24 
+                                                    
+[  46]    051A: 20 20 20 61 29 20 2D 33 20 20 20 20   QA10 DB '   a) -3    b) -2    c) 0$'
+                62 29 20 2D 32 20 20 20 20 63 29 20 
+                30 24                               
+[  47]        :                                       
+[  48]        :                                       
+[  49]        :                                       .CODE
+[  50]    0540:                                       MAIN PROC
+[  51]        :                                       
+[  52]    0540: B8 10 00                              MOV AX,@DATA
+[  53]    0543: 8E D8                                 	MOV DS,AX
+[  54]        :                                       
+[  55]    0545: BA 00 00                              	LEA DX,MSG1                 ;Displaying all the initial 4 text messages before the quiz begins
+[  56]    0548: B4 09                                 	MOV AH,9
+[  57]    054A: CD 21                                 	INT 21H
+[  58]        :                                       	
+[  59]    054C: E8 AB 02                              	CALL NL
+[  60]        :                                       
+[  61]    054F: BA 39 00                              	LEA DX,MSG2
+[  62]    0552: B4 09                                 	MOV AH,9
+[  63]    0554: CD 21                                 	INT 21H
+[  64]        :                                       
+[  65]    0556: E8 A1 02                              	CALL NL
+[  66]        :                                       
+[  67]    0559: BA 41 00                              	LEA DX,MSG3
+[  68]    055C: B4 09                                 	MOV AH,9
+[  69]    055E: CD 21                                 	INT 21H
+[  70]        :                                       
+[  71]    0560: E8 97 02                              CALL NL
+[  72]        :                                       
+[  73]    0563: BA 72 00                              	LEA DX,MSG4
+[  74]    0566: B4 09                                 	MOV AH,9
+[  75]    0568: CD 21                                 	INT 21H
+[  76]        :                                       	
+[  77]        :                                       	
+[  78]    056A:                                       	START:
+[  79]        :                                       	
+[  80]    056A: B3 00                                 	MOV BL, 0
+[  81]    056C: E8 8B 02                              CALL NL
+[  82]        :                                       
+[  83]    056F: BA B3 00                              	LEA DX,MSG5
+[  84]    0572: B4 09                                 	MOV AH,9
+[  85]    0574: CD 21                                 	INT 21H
+[  86]        :                                       	
+[  87]        :                                       	
+[  88]    0576: B4 01                                 	MOV AH, 1
+[  89]    0578: CD 21                                 	INT 21H
+[  90]        :                                       	
+[  91]    057A: 3C 0D                                 	CMP AL, 0DH         ;If enter is pressed then jump to QSN1
+[  92]    057C: 74 02                                 	JE QSN1
+[  93]    057E: 75 EA                                 	JNE START
+[  94]        :                                       	
+[  95]        :                                       
+[  96]    0580:                                       	QSN1:               ;Question 1 begins
+[  97]    0580: E8 77 02                              	CALL NL
+[  98]        :                                       
+[  99]    0583: BA 85 01                              	LEA DX,Q1           ;Printing the Question 1 on console
+[ 100]    0586: B4 09                                 	MOV AH,9
+[ 101]    0588: CD 21                                 	INT 21H
+[ 102]        :                                       	
+[ 103]    058A: E8 6D 02                              	CALL NL
+[ 104]        :                                       
+[ 105]    058D: BA A4 01                              	LEA DX,QA1
+[ 106]    0590: B4 09                                 	MOV AH,9
+[ 107]    0592: CD 21                                 	INT 21H
+[ 108]        :                                       	
+[ 109]    0594: E8 63 02                              	CALL NL
+[ 110]        :                                       
+[ 111]    0597: B4 01                                 	MOV AH, 1
+[ 112]    0599: CD 21                                 	INT 21H
+[ 113]    059B: 3C 61                                 	CMP AL, 'a'         ;Comparing whether the input answer is equal to 'a' or not
+[ 114]    059D: 74 02                                 	JE QSN2             ;if yes then jump to QSN2 i.e. inc BL by 1 and displaying the next question
+[ 115]    059F: 75 1B                                 JNE QSNW2           ;if no then jump to QSNW2 i.e. dec BL by 1 and displaying the next question
+[ 116]        :                                       
+[ 117]        :                                       	
+[ 118]    05A1:                                       	QSN2:
+[ 119]    05A1: E8 56 02                              	CALL NL
+[ 120]        :                                       
+[ 121]    05A4: BA D3 00                              	LEA DX,MSG6
+[ 122]    05A7: B4 09                                 	MOV AH,9
+[ 123]    05A9: CD 21                                 	INT 21H
+[ 124]        :                                       	
+[ 125]    05AB: FE C3                                 	INC BL              ;Incrementing the BL register by 1
+[ 126]    05AD: E8 4A 02                              	CALL NL
+[ 127]        :                                       
+[ 128]    05B0: E8 52 02                              	CALL QN2            ;Next question call
+[ 129]        :                                       	
+[ 130]    05B3: E8 F1 02                              	CALL INPUT          ;Getting the input	
+[ 131]    05B6: 3C 62                                 	CMP AL, 'b'         ;Comparing the answers
+[ 132]    05B8: 74 1D                                 	JE QSN3
+[ 133]    05BA: 75 36                                 	JNE QSNW3
+[ 134]        :                                       	
+[ 135]    05BC:                                       	QSNW2:
+[ 136]    05BC: E8 3B 02                              	CALL NL
+[ 137]        :                                       
+[ 138]    05BF: BA E2 00                              	LEA DX,MSG7
+[ 139]    05C2: B4 09                                 	MOV AH,9
+[ 140]    05C4: CD 21                                 	INT 21H
+[ 141]        :                                       	
+[ 142]    05C6: FE CB                                 	DEC BL              ;Decrementing the BL register by 1
+[ 143]    05C8: E8 2F 02                              	CALL NL
+[ 144]        :                                       
+[ 145]    05CB: E8 37 02                              	CALL QN2            ;Call to next question
+[ 146]    05CE: E8 D6 02                              	CALL INPUT          ;Getting the input
+[ 147]        :                                       	
+[ 148]    05D1: 3C 62                                 	CMP AL, 'b'         ;Comparing the answers
+[ 149]    05D3: 74 02                                 	JE QSN3
+[ 150]    05D5: 75 1B                                 	JNE QSNW3
+[ 151]        :                                       	
+[ 152]        :                                       	
+[ 153]    05D7:                                       	QSN3:
+[ 154]    05D7: E8 20 02                              	CALL NL
+[ 155]        :                                       
+[ 156]    05DA: BA D3 00                              	LEA DX,MSG6
+[ 157]    05DD: B4 09                                 	MOV AH,9
+[ 158]    05DF: CD 21                                 	INT 21H
+[ 159]        :                                       	
+[ 160]    05E1: FE C3                                 	INC BL
+[ 161]    05E3: E8 14 02                              	CALL NL
+[ 162]        :                                       
+[ 163]        :                                       
+[ 164]    05E6: E8 2E 02                              	CALL QN3
+[ 165]    05E9: E8 BB 02                              	CALL INPUT
+[ 166]        :                                       	
+[ 167]    05EC: 3C 63                                 	CMP AL, 'c'
+[ 168]    05EE: 74 1D                                 	JE QSN4
+[ 169]    05F0: 75 36                                 	JNE QSNW4
+[ 170]        :                                       	
+[ 171]    05F2:                                       	QSNW3:
+[ 172]    05F2: E8 05 02                              	CALL NL
+[ 173]        :                                       
+[ 174]    05F5: BA E2 00                              	LEA DX,MSG7
+[ 175]    05F8: B4 09                                 	MOV AH,9
+[ 176]    05FA: CD 21                                 	INT 21H
+[ 177]        :                                       	
+[ 178]    05FC: FE CB                                 	DEC BL
+[ 179]    05FE: E8 F9 01                              	CALL NL
+[ 180]        :                                       
+[ 181]    0601: E8 13 02                              	CALL QN3
+[ 182]    0604: E8 A0 02                              	CALL INPUT
+[ 183]        :                                       	
+[ 184]    0607: 3C 63                                 	CMP AL, 'c'
+[ 185]    0609: 74 02                                 	JE QSN4
+[ 186]    060B: 75 1B                                 	JNE QSNW4
+[ 187]        :                                       	
+[ 188]    060D:                                       	QSN4:
+[ 189]    060D: E8 EA 01                              	CALL NL
+[ 190]        :                                       
+[ 191]    0610: BA D3 00                              	LEA DX,MSG6
+[ 192]    0613: B4 09                                 	MOV AH,9
+[ 193]    0615: CD 21                                 	INT 21H
+[ 194]        :                                       	
+[ 195]    0617: FE C3                                 	INC BL
+[ 196]    0619: E8 DE 01                              	CALL NL
+[ 197]        :                                       
+[ 198]    061C: E8 0A 02                              	CALL QN4
+[ 199]    061F: E8 85 02                              	CALL INPUT
+[ 200]        :                                       	
+[ 201]    0622: 3C 62                                 	CMP AL, 'b'
+[ 202]    0624: 74 1D                                 	JE QSN5
+[ 203]    0626: 75 36                                 	JNE QSNW5
+[ 204]        :                                       	
+[ 205]    0628:                                       	QSNW4:
+[ 206]    0628: E8 CF 01                              	CALL NL
+[ 207]        :                                       
+[ 208]    062B: BA E2 00                              	LEA DX,MSG7
+[ 209]    062E: B4 09                                 	MOV AH,9
+[ 210]    0630: CD 21                                 	INT 21H
+[ 211]        :                                       	
+[ 212]    0632: FE CB                                 	DEC BL
+[ 213]    0634: E8 C3 01                              	CALL NL
+[ 214]        :                                       
+[ 215]    0637: E8 EF 01                              	CALL QN4
+[ 216]    063A: E8 6A 02                              	CALL INPUT
+[ 217]        :                                       	
+[ 218]    063D: 3C 62                                 	CMP AL, 'b'
+[ 219]    063F: 74 02                                 	JE QSN5
+[ 220]    0641: 75 1B                                 	JNE QSNW5
+[ 221]        :                                       	
+[ 222]    0643:                                       	QSN5:
+[ 223]    0643: E8 B4 01                              	CALL NL
+[ 224]        :                                       
+[ 225]    0646: BA D3 00                              	LEA DX,MSG6
+[ 226]    0649: B4 09                                 	MOV AH,9
+[ 227]    064B: CD 21                                 	INT 21H
+[ 228]        :                                       	
+[ 229]    064D: FE C3                                 	INC BL
+[ 230]    064F: E8 A8 01                              	CALL NL
+[ 231]        :                                       
+[ 232]    0652: E8 E6 01                              	CALL QN5
+[ 233]        :                                       	
+[ 234]    0655: E8 4F 02                              	CALL INPUT
+[ 235]        :                                       	
+[ 236]    0658: 3C 61                                 	CMP AL, 'a'
+[ 237]    065A: 74 1D                                 	JE QSN6
+[ 238]    065C: 75 36                                 	JNE QSNW6
+[ 239]        :                                       	
+[ 240]    065E:                                       	QSNW5:
+[ 241]    065E: E8 99 01                              	CALL NL
+[ 242]        :                                       
+[ 243]    0661: BA E2 00                              	LEA DX,MSG7
+[ 244]    0664: B4 09                                 	MOV AH,9
+[ 245]    0666: CD 21                                 	INT 21H
+[ 246]        :                                       	
+[ 247]    0668: FE CB                                 	DEC BL
+[ 248]    066A: E8 8D 01                              	CALL NL
+[ 249]        :                                       
+[ 250]    066D: E8 CB 01                              	CALL QN5
+[ 251]    0670: E8 34 02                              	CALL INPUT
+[ 252]        :                                       	
+[ 253]    0673: 3C 61                                 	CMP AL, 'a'
+[ 254]    0675: 74 02                                 	JE QSN6
+[ 255]    0677: 75 1B                                 	JNE QSNW6
+[ 256]        :                                       	
+[ 257]    0679:                                       	QSN6:
+[ 258]    0679: E8 7E 01                              	CALL NL
+[ 259]        :                                       
+[ 260]    067C: BA D3 00                              	LEA DX,MSG6
+[ 261]    067F: B4 09                                 	MOV AH,9
+[ 262]    0681: CD 21                                 	INT 21H
+[ 263]        :                                       	
+[ 264]    0683: FE C3                                 	INC BL
+[ 265]    0685: E8 72 01                              	CALL NL
+[ 266]        :                                       
+[ 267]    0688: E8 C2 01                              	CALL QN6
+[ 268]        :                                       	
+[ 269]    068B: E8 19 02                              	CALL INPUT
+[ 270]        :                                       	
+[ 271]    068E: 3C 63                                 	CMP AL, 'c'
+[ 272]    0690: 74 1D                                 	JE QSN7
+[ 273]    0692: 75 36                                 	JNE QSNW7
+[ 274]        :                                       	
+[ 275]    0694:                                       	QSNW6:
+[ 276]    0694: E8 63 01                              	CALL NL
+[ 277]        :                                       
+[ 278]    0697: BA E2 00                              	LEA DX,MSG7
+[ 279]    069A: B4 09                                 	MOV AH,9
+[ 280]    069C: CD 21                                 	INT 21H
+[ 281]        :                                       	
+[ 282]    069E: FE CB                                 	DEC BL
+[ 283]    06A0: E8 57 01                              	CALL NL
+[ 284]        :                                       
+[ 285]    06A3: E8 A7 01                              	CALL QN6
+[ 286]    06A6: E8 FE 01                              	CALL INPUT
+[ 287]        :                                       	
+[ 288]    06A9: 3C 63                                 	CMP AL, 'c'
+[ 289]    06AB: 74 02                                 	JE QSN7
+[ 290]    06AD: 75 1B                                 	JNE QSNW7
+[ 291]        :                                       	
+[ 292]    06AF:                                       	QSN7:
+[ 293]    06AF: E8 48 01                              	CALL NL
+[ 294]        :                                       
+[ 295]    06B2: BA D3 00                              	LEA DX,MSG6
+[ 296]    06B5: B4 09                                 	MOV AH,9
+[ 297]    06B7: CD 21                                 	INT 21H
+[ 298]        :                                       	
+[ 299]    06B9: FE C3                                 	INC BL
+[ 300]    06BB: E8 3C 01                              	CALL NL
+[ 301]        :                                       
+[ 302]    06BE: E8 9E 01                              	CALL QN7
+[ 303]    06C1: E8 E3 01                              	CALL INPUT
+[ 304]        :                                       	
+[ 305]    06C4: 3C 62                                 	CMP AL, 'b'
+[ 306]    06C6: 74 1D                                 	JE QSN8
+[ 307]    06C8: 75 36                                 	JNE QSNW8
+[ 308]        :                                       	
+[ 309]    06CA:                                       	QSNW7:
+[ 310]    06CA: E8 2D 01                              	CALL NL
+[ 311]        :                                       
+[ 312]    06CD: BA E2 00                              	LEA DX,MSG7
+[ 313]    06D0: B4 09                                 	MOV AH,9
+[ 314]    06D2: CD 21                                 	INT 21H
+[ 315]        :                                       	
+[ 316]    06D4: FE CB                                 	DEC BL
+[ 317]    06D6: E8 21 01                              	CALL NL
+[ 318]        :                                       
+[ 319]    06D9: E8 83 01                              	CALL QN7
+[ 320]    06DC: E8 C8 01                              	CALL INPUT
+[ 321]        :                                       	
+[ 322]    06DF: 3C 62                                 	CMP AL, 'b'
+[ 323]    06E1: 74 02                                 	JE QSN8
+[ 324]    06E3: 75 1B                                 	JNE QSNW8
+[ 325]        :                                       	
+[ 326]    06E5:                                       	QSN8:
+[ 327]    06E5: E8 12 01                              	CALL NL
+[ 328]        :                                       
+[ 329]    06E8: BA D3 00                              	LEA DX,MSG6
+[ 330]    06EB: B4 09                                 	MOV AH,9
+[ 331]    06ED: CD 21                                 	INT 21H
+[ 332]        :                                       	
+[ 333]    06EF: FE C3                                 	INC BL
+[ 334]    06F1: E8 06 01                              	CALL NL
+[ 335]        :                                       
+[ 336]    06F4: E8 7A 01                              	CALL QN8
+[ 337]    06F7: E8 AD 01                              	CALL INPUT
+[ 338]        :                                       	
+[ 339]    06FA: 3C 63                                 	CMP AL, 'c'
+[ 340]    06FC: 74 1D                                 	JE QSN9
+[ 341]    06FE: 75 36                                 	JNE QSNW9
+[ 342]        :                                       	
+[ 343]    0700:                                       	QSNW8:
+[ 344]    0700: E8 F7 00                              	CALL NL
+[ 345]        :                                       
+[ 346]    0703: BA E2 00                              	LEA DX,MSG7
+[ 347]    0706: B4 09                                 	MOV AH,9
+[ 348]    0708: CD 21                                 	INT 21H
+[ 349]        :                                       	
+[ 350]    070A: FE CB                                 	DEC BL
+[ 351]    070C: E8 EB 00                              	CALL NL
+[ 352]        :                                       
+[ 353]    070F: E8 5F 01                              	CALL QN8
+[ 354]    0712: E8 92 01                              	CALL INPUT
+[ 355]        :                                       	
+[ 356]    0715: 3C 63                                 	CMP AL, 'c'
+[ 357]    0717: 74 02                                 	JE QSN9
+[ 358]    0719: 75 1B                                 	JNE QSNW9
+[ 359]        :                                       	
+[ 360]    071B:                                       	QSN9:
+[ 361]    071B: E8 DC 00                              	CALL NL
+[ 362]        :                                       
+[ 363]    071E: BA D3 00                              	LEA DX,MSG6
+[ 364]    0721: B4 09                                 	MOV AH,9
+[ 365]    0723: CD 21                                 	INT 21H
+[ 366]        :                                       	
+[ 367]    0725: FE C3                                 	INC BL
+[ 368]    0727: E8 D0 00                              	CALL NL
+[ 369]        :                                       
+[ 370]    072A: E8 56 01                              	CALL QN9
+[ 371]    072D: E8 77 01                              	CALL INPUT
+[ 372]        :                                       	
+[ 373]    0730: 3C 61                                 	CMP AL, 'a'
+[ 374]    0732: 74 1D                                 	JE QSN10
+[ 375]    0734: 75 36                                 	JNE QSNW10
+[ 376]        :                                       	
+[ 377]    0736:                                       	QSNW9:
+[ 378]    0736: E8 C1 00                              	CALL NL
+[ 379]        :                                       
+[ 380]    0739: BA E2 00                              	LEA DX,MSG7
+[ 381]    073C: B4 09                                 	MOV AH,9
+[ 382]    073E: CD 21                                 	INT 21H
+[ 383]        :                                       	
+[ 384]    0740: FE CB                                 	DEC BL
+[ 385]    0742: E8 B5 00                              	CALL NL
+[ 386]        :                                       
+[ 387]    0745: E8 3B 01                              	CALL QN9
+[ 388]    0748: E8 5C 01                              	CALL INPUT
+[ 389]        :                                       	
+[ 390]    074B: 3C 61                                 	CMP AL, 'a'
+[ 391]    074D: 74 02                                 	JE QSN10
+[ 392]    074F: 75 1B                                 	JNE QSNW10
+[ 393]        :                                       	
+[ 394]    0751:                                       	QSN10:
+[ 395]    0751: E8 A6 00                              	CALL NL
+[ 396]        :                                       
+[ 397]    0754: BA D3 00                              	LEA DX,MSG6
+[ 398]    0757: B4 09                                 	MOV AH,9
+[ 399]    0759: CD 21                                 	INT 21H
+[ 400]        :                                       	
+[ 401]    075B: FE C3                                 	INC BL
+[ 402]    075D: E8 9A 00                              	CALL NL
+[ 403]        :                                       
+[ 404]    0760: E8 32 01                              	CALL QN10
+[ 405]    0763: E8 41 01                              	CALL INPUT
+[ 406]        :                                       	
+[ 407]    0766: 3C 61                                 	CMP AL, 'a'
+[ 408]    0768: 74 1D                                 	JE EXIT
+[ 409]    076A: 75 4F                                 	JNE EXITW
+[ 410]        :                                       	
+[ 411]    076C:                                       	QSNW10:
+[ 412]    076C: E8 8B 00                              	CALL NL
+[ 413]        :                                       
+[ 414]    076F: BA E2 00                              	LEA DX,MSG7
+[ 415]    0772: B4 09                                 	MOV AH,9
+[ 416]    0774: CD 21                                 	INT 21H
+[ 417]        :                                       	
+[ 418]    0776: FE CB                                 	DEC BL
+[ 419]    0778: E8 7F 00                              	CALL NL
+[ 420]        :                                       
+[ 421]    077B: E8 17 01                              	CALL QN10
+[ 422]    077E: E8 26 01                              	CALL INPUT
+[ 423]        :                                       	
+[ 424]    0781: 3C 61                                 	CMP AL, 'a'
+[ 425]    0783: 74 02                                 	JE EXIT
+[ 426]    0785: 75 34                                 	JNE EXITW
+[ 427]        :                                       	
+[ 428]    0787:                                       	EXIT:
+[ 429]    0787: E8 70 00                              	CALL NL
+[ 430]        :                                       
+[ 431]    078A: BA D3 00                              	LEA DX,MSG6
+[ 432]    078D: B4 09                                 	MOV AH,9
+[ 433]    078F: CD 21                                 	INT 21H
+[ 434]        :                                       	
+[ 435]    0791: FE C3                                 	INC BL
+[ 436]    0793: E8 64 00                              	CALL NL
+[ 437]    0796: E8 61 00                              	CALL NL
+[ 438]        :                                       
+[ 439]    0799: BA F3 00                              	LEA DX,MSG8
+[ 440]    079C: B4 09                                 	MOV AH,9
+[ 441]    079E: CD 21                                 	INT 21H
+[ 442]        :                                       	
+[ 443]    07A0: E8 57 00                              	CALL NL
+[ 444]        :                                       
+[ 445]    07A3: BA 1E 01                              	LEA DX,MSG9
+[ 446]    07A6: B4 09                                 	MOV AH,9
+[ 447]    07A8: CD 21                                 	INT 21H
+[ 448]        :                                       	
+[ 449]    07AA: 80 C3 30                              	ADD BL, 48
+[ 450]        :                                       	
+[ 451]    07AD: 80 FB 39                              	CMP BL,57
+[ 452]    07B0: 7F 3B                                 	JG TEN
+[ 453]    07B2: B4 02                                 	MOV AH, 2
+[ 454]    07B4: 8A D3                                 	MOV DL, BL
+[ 455]    07B6: CD 21                                 	INT 21H
+[ 456]    07B8: E9 F4 00                              	JMP EXIT1
+[ 457]        :                                       	
+[ 458]    07BB:                                       	EXITW:
+[ 459]    07BB: E8 3C 00                              	CALL NL
+[ 460]        :                                       
+[ 461]    07BE: BA E2 00                              	LEA DX,MSG7
+[ 462]    07C1: B4 09                                 	MOV AH,9
+[ 463]    07C3: CD 21                                 	INT 21H
+[ 464]        :                                       	
+[ 465]    07C5: FE CB                                 	DEC BL
+[ 466]    07C7: E8 30 00                              	CALL NL
+[ 467]    07CA: E8 2D 00                              	CALL NL
+[ 468]        :                                       
+[ 469]        :                                       
+[ 470]    07CD: BA F3 00                              	LEA DX,MSG8
+[ 471]    07D0: B4 09                                 	MOV AH,9
+[ 472]    07D2: CD 21                                 	INT 21H
+[ 473]        :                                       	
+[ 474]    07D4: E8 23 00                              	CALL NL
+[ 475]    07D7: E8 20 00                              CALL NL
+[ 476]        :                                       
+[ 477]    07DA: BA 1E 01                              	LEA DX,MSG9
+[ 478]    07DD: B4 09                                 	MOV AH,9
+[ 479]    07DF: CD 21                                 	INT 21H
+[ 480]        :                                       	
+[ 481]    07E1: 80 C3 30                              	ADD BL,48
+[ 482]    07E4: B4 02                                 	MOV AH,2
+[ 483]    07E6: 8A D3                                 	MOV DL, BL
+[ 484]    07E8: CD 21                                 	INT 21H
+[ 485]        :                                       	
+[ 486]    07EA: E9 C2 00                              	JMP EXIT1
+[ 487]        :                                       	
+[ 488]    07ED:                                       	TEN:
+[ 489]    07ED: B4 02                                 	MOV AH,2
+[ 490]    07EF: B2 31                                 	MOV DL,"1"
+[ 491]    07F1: CD 21                                 	INT 21H                     ;getting the last inputs to exit or continue once again
+[ 492]    07F3: B2 30                                 	MOV DL,"0"
+[ 493]    07F5: CD 21                                 	INT 21H
+[ 494]    07F7: E9 B5 00                              	JMP EXIT1
+[ 495]        :                                       	
+[ 496]    07FA:                                       	NL:
+[ 497]    07FA: B4 02                                 	MOV AH,2
+[ 498]    07FC: B2 0A                                 	MOV DL, 0AH
+[ 499]    07FE: CD 21                                 	INT 21H
+[ 500]    0800: B2 0D                                 MOV DL, 0DH
+[ 501]    0802: CD 21                                 INT 21H
+[ 502]    0804: C3                                    RET
+[ 503]        :                                       
+[ 504]    0805:                                       QN2:
+[ 505]    0805: BA BF 01                              LEA DX,Q2
+[ 506]    0808: B4 09                                 	MOV AH,9
+[ 507]    080A: CD 21                                 	INT 21H
+[ 508]        :                                       	
+[ 509]    080C: E8 EB FF                              	CALL NL
+[ 510]        :                                       
+[ 511]    080F: BA EB 01                              	LEA DX,QA2
+[ 512]    0812: B4 09                                 	MOV AH,9
+[ 513]    0814: CD 21                                 	INT 21H
+[ 514]    0816: C3                                    	RET
+[ 515]        :                                       	
+[ 516]    0817:                                       	QN3:
+[ 517]    0817: BA 03 02                              LEA DX,Q3
+[ 518]    081A: B4 09                                 	MOV AH,9
+[ 519]    081C: CD 21                                 	INT 21H
+[ 520]        :                                       	
+[ 521]    081E: E8 D9 FF                              	CALL NL
+[ 522]        :                                       
+[ 523]    0821: BA 1B 02                              	LEA DX,QA3
+[ 524]    0824: B4 09                                 	MOV AH,9
+[ 525]    0826: CD 21                                 	INT 21H
+[ 526]    0828: C3                                    	RET
+[ 527]        :                                       	
+[ 528]    0829:                                       	QN4:
+[ 529]    0829: BA 3C 02                              LEA DX,Q4
+[ 530]    082C: B4 09                                 	MOV AH,9
+[ 531]    082E: CD 21                                 	INT 21H
+[ 532]        :                                       	
+[ 533]    0830: E8 C7 FF                              	CALL NL
+[ 534]        :                                       
+[ 535]    0833: BA 59 02                              	LEA DX,QA4
+[ 536]    0836: B4 09                                 	MOV AH,9
+[ 537]    0838: CD 21                                 	INT 21H
+[ 538]    083A: C3                                    	RET
+[ 539]        :                                       	
+[ 540]    083B:                                       	QN5:
+[ 541]    083B: BA 77 02                              LEA DX,Q5
+[ 542]    083E: B4 09                                 	MOV AH,9
+[ 543]    0840: CD 21                                 	INT 21H
+[ 544]        :                                       	
+[ 545]    0842: E8 B5 FF                              	CALL NL
+[ 546]        :                                       
+[ 547]    0845: BA 9B 02                              	LEA DX,QA5
+[ 548]    0848: B4 09                                 	MOV AH,9
+[ 549]    084A: CD 21                                 	INT 21H
+[ 550]    084C: C3                                    	RET
+[ 551]        :                                       	
+[ 552]    084D:                                       	QN6:
+[ 553]    084D: BA BF 02                              LEA DX,Q6
+[ 554]    0850: B4 09                                 	MOV AH,9
+[ 555]    0852: CD 21                                 	INT 21H
+[ 556]        :                                       	
+[ 557]    0854: E8 A3 FF                              	CALL NL
+[ 558]        :                                       
+[ 559]    0857: BA E3 02                              	LEA DX,QA6
+[ 560]    085A: B4 09                                 	MOV AH,9
+[ 561]    085C: CD 21                                 	INT 21H
+[ 562]    085E: C3                                    	RET
+[ 563]        :                                       	
+[ 564]    085F:                                       	QN7:
+[ 565]    085F: BA FB 02                              LEA DX,Q7
+[ 566]    0862: B4 09                                 	MOV AH,9
+[ 567]    0864: CD 21                                 	INT 21H
+[ 568]        :                                       	
+[ 569]    0866: E8 91 FF                              	CALL NL
+[ 570]        :                                       
+[ 571]    0869: BA 10 03                              	LEA DX,QA7
+[ 572]    086C: B4 09                                 	MOV AH,9
+[ 573]    086E: CD 21                                 	INT 21H
+[ 574]    0870: C3                                    	RET
+[ 575]        :                                       	
+[ 576]    0871:                                       	QN8:
+[ 577]    0871: BA 2E 03                              LEA DX,Q8
+[ 578]    0874: B4 09                                 	MOV AH,9
+[ 579]    0876: CD 21                                 	INT 21H
+[ 580]        :                                       	
+[ 581]    0878: E8 7F FF                              	CALL NL
+[ 582]        :                                       
+[ 583]    087B: BA 5C 03                              	LEA DX,QA8
+[ 584]    087E: B4 09                                 	MOV AH,9
+[ 585]    0880: CD 21                                 	INT 21H
+[ 586]    0882: C3                                    	RET
+[ 587]        :                                       	
+[ 588]    0883:                                       	QN9:
+[ 589]    0883: BA 74 03                              LEA DX,Q9
+[ 590]    0886: B4 09                                 	MOV AH,9
+[ 591]    0888: CD 21                                 	INT 21H
+[ 592]        :                                       	
+[ 593]    088A: E8 6D FF                              	CALL NL
+[ 594]        :                                       
+[ 595]    088D: BA BD 03                              	LEA DX,QA9
+[ 596]    0890: B4 09                                 	MOV AH,9
+[ 597]    0892: CD 21                                 	INT 21H
+[ 598]    0894: C3                                    	RET
+[ 599]        :                                       	
+[ 600]    0895:                                       	QN10:
+[ 601]    0895: BA EA 03                              LEA DX,Q10
+[ 602]    0898: B4 09                                 	MOV AH,9
+[ 603]    089A: CD 21                                 	INT 21H
+[ 604]        :                                       	
+[ 605]    089C: E8 5B FF                              	CALL NL
+[ 606]        :                                       
+[ 607]    089F: BA 1A 04                              	LEA DX,QA10
+[ 608]    08A2: B4 09                                 	MOV AH,9
+[ 609]    08A4: CD 21                                 	INT 21H
+[ 610]    08A6: C3                                    	RET
+[ 611]        :                                       	
+[ 612]        :                                       	
+[ 613]    08A7:                                       	INPUT:
+[ 614]    08A7: E8 50 FF                              	CALL NL
+[ 615]    08AA: B4 01                                 	MOV AH, 1
+[ 616]    08AC: CD 21                                 	INT 21H
+[ 617]    08AE: C3                                    	RET
+[ 618]        :                                       	
+[ 619]        :                                       	
+[ 620]        :                                       	
+[ 621]    08AF:                                       	EXIT1:                     ;when 1 is pressed the code restarts from the start
+[ 622]    08AF: E8 48 FF                              	CALL NL                    ;when 0 is pressed the code displays the message of Thank You(MSG11) and goes to the ENDP
+[ 623]    08B2: E8 45 FF                              	CALL NL
+[ 624]        :                                       	
+[ 625]    08B5: BA 35 01                              	LEA DX,MSG10
+[ 626]    08B8: B4 09                                 	MOV AH,9
+[ 627]    08BA: CD 21                                 	INT 21H
+[ 628]        :                                       	
+[ 629]    08BC: B4 01                                 	MOV AH,1
+[ 630]    08BE: CD 21                                 	INT 21H
+[ 631]        :                                       	
+[ 632]    08C0: 3C 31                                 	CMP AL,'1'
+[ 633]    08C2: 75 03 E9 A3 FC                        	JE START
+[ 634]        :                                       	
+[ 635]    08C7: E8 30 FF                              	CALL NL
+[ 636]    08CA: E8 2D FF                              	CALL NL
+[ 637]        :                                       	
+[ 638]    08CD: BA 5E 01                              	LEA DX,MSG11
+[ 639]    08D0: B4 09                                 	MOV AH,9
+[ 640]    08D2: CD 21                                 	INT 21H
+[ 641]        :                                       	
+[ 642]    08D4: B4 4C                                 	MOV AH, 4CH
+[ 643]    08D6: CD 21                                 	INT 21H
+[ 644]        :                                       	
+[ 645]        :                                       	MAIN ENDP
+[ 646]        :                                       END MAIN
+[ 647]        :                                       
+[ 648]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: D8      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 06      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 69      -   check sum (l.byte)
+0013: 91      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 54      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 54      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
