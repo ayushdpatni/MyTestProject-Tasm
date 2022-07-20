@@ -1,5 +1,5 @@
 # MyTestProject-Tasm
-This is the test/quizzing project made for my Computer Organization and Architecture subject in college. Basically, it has 10 questions which we need to attempt during the test and at the end it shows us the final result.
+This is the test/quizzing project made using assembly language. Basically, it has 10 questions which we need to attempt during the test and at the end it shows us the final result.
 
 **Screenshots**
 ![Screenshot (851)](https://user-images.githubusercontent.com/84375036/177034503-b1003895-cad8-423c-9260-3e47cf39fb84.png)
